@@ -1,60 +1,79 @@
-import { useEffect, useState } from "react"
+
 import Item from "./Item"
 
 
+const ItemList = ({productos}) => {
 
-const productosIniciales = [
-    {
-        id:1,
-        nombre: "Producto 1",
-        precio: 100
-    },
-    {
-        id:2,
-        nombre: "Producto 2",
-        precio: 200
-    },
-    {
-        id:3,
-        nombre: "Producto 3",
-        precio: 300
-    }
-]
-const ItemList = () => {
-    const [productos,setProductos] = useState([])
-
-useEffect(()=>{
-    const promesa = new Promise ((res)=>{    
-        setTimeout(() =>{
-        res(productosIniciales)
-},2000)
-        
-}
-)
-
-.then((contenido)=>{
-    setProductos(contenido)
-}
-)
-.catch((error)=>{
-    console.log("Salio todo mal")
-})
-
-console.log("Pido productos")
-},[])  
 return(
-<>
-    <ul>
-     {productos.map((producto) => {
-        console.log(producto)
-         return <Item key={producto.id} producto={producto}></Item>
-     })}
-    </ul>
-    </>
+    <section className="card-container">
+    {productos.map(producto=>{
+        return(
+            <Item key={producto.id} producto={producto}/>
+            
+        )
+        })}
+    </section>
 )
 }
 
 export default ItemList
+
+
+
+
+
+// const productosIniciales = [
+//     {
+//         id:1,
+//         nombre: "Producto 1",
+//         precio: 100
+//     },
+//     {
+//         id:2,
+//         nombre: "Producto 2",
+//         precio: 200
+//     },
+//     {
+//         id:3,
+//         nombre: "Producto 3",
+//         precio: 300
+//     }
+// ]
+// const ItemList = () => {
+//     const [productos,setProductos] = useState([])
+
+// useEffect(()=>{
+//     const promesa = new Promise ((res)=>{    
+//         setTimeout(() =>{
+//         res(productosIniciales)
+// },2000)
+        
+// }
+// )
+
+// .then((contenido)=>{
+//     setProductos(contenido)
+// }
+// )
+// .catch((error)=>{
+//     console.log("Salio todo mal")
+// })
+
+// console.log("Pido productos")
+// },[])  
+// return(
+// <>
+//     <ul>
+//      {productos.map((producto) => {
+//         console.log(producto)
+//          return <Item key={producto.id} producto={producto}></Item>
+//      })}
+//     </ul>
+//     </>
+// )
+// }
+
+
 
 
 

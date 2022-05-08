@@ -13,42 +13,41 @@ const productosProbando = [
         precio: 500
     },
     {
+
         id:6,
         nombre: "Producto 6",
         precio: 600
     }
 ]
 
-const ItemDetailContainer = () => {
-    const [productos,setProductos] = useState([])
+const ItemDetailContainer = ({id}) => {
+    const [producto,setProducto] = useState([])
 
     useEffect(()=>{
         const promesa = new Promise ((res)=>{    
             setTimeout(() =>{
-            res(productosProbando)
+            const buscarProducto = productosProbando.find(producto => producto.id === id)
+            res(buscarProducto)
     },2000)
             
-    }
-    )
+    })
     
     .then((contenido)=>{
-        setProductos(contenido)
-    }
-    )
+        setProducto(contenido)
+    })
     .catch((error)=>{
         console.log("Salio todo mal")
     })
     
-    },[])  
+    },[id])  
     return(
         <>
     <p>Cargando..... </p>
     <ul>   
-    <ItemDetail producto={productos}></ItemDetail>
+    <ItemDetail producto={producto}></ItemDetail>
     </ul>
     
     </>
     )
 }
-
 export default ItemDetailContainer
